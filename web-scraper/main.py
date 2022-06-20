@@ -11,7 +11,7 @@ import time
 domain = "https://www.tripadvisor.com"
 path_to_list_of_attractions = "/Attractions-g44881-Activities-a_allAttractions.true-Saint_Louis_Missouri.html"
 city = "Saint Louis"
-
+"""
 # Get links to all attractions on list of attractions page
 driver = webdriver.Firefox()
 driver.get(domain + path_to_list_of_attractions)
@@ -26,7 +26,10 @@ driver.close()
 
 # Get rid of 29 elements of 30
 for i in range(29):
-    attraction_list_links.pop(0)
+    attraction_list_links.pop(0)"""
+
+attraction_list_links = [1]
+
 # Visit each attraction link & scrape data
 for attraction in attraction_list_links:
     driver = webdriver.Firefox()
@@ -57,4 +60,12 @@ for attraction in attraction_list_links:
                 if i.text == "Call":
                     return attraction_phone_number["href"]
     attraction_phone_number = get_attraction_phone_number()[11:]
+    def get_attraction_hours():
+        attraction_hours_raw = attraction_document.find_all("div", {"class": "efQQj"})
+        attraction_hours = []
+        for i in attraction_hours_raw:
+            separation_index = i.text.index("y") + 1
+            attraction_hours.append({i.text[:separation_index]: i.text[separation_index:]})
+        return attraction_hours
+    attraction_hours = get_attraction_hours()
     driver.close()
