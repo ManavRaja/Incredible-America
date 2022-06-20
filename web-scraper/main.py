@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver import ActionChains
 import time
 
 
@@ -25,7 +27,6 @@ driver.close()
 # Get rid of 29 elements of 30
 for i in range(29):
     attraction_list_links.pop(0)
-
 # Visit each attraction link & scrape data
 for attraction in attraction_list_links:
     driver = webdriver.Firefox()
@@ -49,5 +50,11 @@ for attraction in attraction_list_links:
                 return attraction_website.parent["href"]
     attraction_website_link = get_attraction_website()
     attraction_rating = attraction_document.find("div", {"class": "WlYyy cPsXC fksET cMKSg"}).text
-    
+    def get_attraction_phone_number():
+        attraction_phone_number_raw = attraction_document.find_all("a", {"class": "bfQwA _G B- _S _T c G_ P0 ddFHE cnvzr bTBvn"})
+        for attraction_phone_number in attraction_phone_number_raw:
+            for i in attraction_phone_number.children:
+                if i.text == "Call":
+                    return attraction_phone_number["href"]
+    attraction_phone_number = get_attraction_phone_number()[11:]
     driver.close()
