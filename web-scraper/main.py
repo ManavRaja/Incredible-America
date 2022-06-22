@@ -35,7 +35,7 @@ for attraction in attraction_list_links:
     driver = webdriver.Firefox()
     #driver.get(domain + str(attraction))
     driver.get("https://www.tripadvisor.com/Attraction_Review-g44881-d107811-Reviews-Missouri_Botanical_Garden-Saint_Louis_Missouri.html")
-    time.sleep(1)
+    time.sleep(2)
     driver_document = driver.page_source
     attraction_document = BeautifulSoup(driver_document, "html.parser")
 
@@ -68,4 +68,17 @@ for attraction in attraction_list_links:
             attraction_hours.append({i.text[:separation_index]: i.text[separation_index:]})
         return attraction_hours
     attraction_hours = get_attraction_hours()
+    def get_attraction_photo():
+        driver.find_element(By.XPATH, "//span[text()='Full view']").click()
+        time.sleep(2)
+        driver_document = driver.page_source
+        attraction_document = BeautifulSoup(driver_document, "html.parser")
+        attraction_photo_raw = attraction_document.find("picture", {"class": "dugSS _R fXtOt kFZIK"})
+        attraction_photo_raw_list = attraction_photo_raw.contents
+        attraction_photo_raw_list_length_need_to_delete = len(attraction_photo_raw_list) - 1
+        for attraction_photo_link in range(attraction_photo_raw_list_length_need_to_delete):
+            attraction_photo_raw_list.pop(0)
+        attraction_photo_link = attraction_photo_raw_list[0]["src"]
+        return attraction_photo_link
+    attraction_photo_link = get_attraction_photo()
     driver.close()
