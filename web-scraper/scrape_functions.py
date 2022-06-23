@@ -57,3 +57,12 @@ def get_attraction_photo(web_driver):
         attraction_photo_raw_list.pop(0)
     attraction_photo_link = attraction_photo_raw_list[0]["src"]
     return attraction_photo_link
+
+def get_attraction_types(html_document):
+    attraction_types_raw = html_document.find("div", {"class": "pIRBV _T KRIav"}).text
+    if "•" in attraction_types_raw:
+        attraction_types = attraction_types_raw.split(" • ")
+        return attraction_types
+    else:
+        attraction_types = attraction_types_raw
+        return attraction_types

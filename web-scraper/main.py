@@ -6,11 +6,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
 import time
-from scrape_functions import get_attraction_list, get_attraction_name, get_attraction_address, get_attraction_website, get_attraction_rating, get_attraction_phone_number, get_attraction_hours, get_attraction_photo
+from scrape_functions import get_attraction_list, get_attraction_name, get_attraction_address, get_attraction_website, get_attraction_rating, get_attraction_phone_number, get_attraction_hours, get_attraction_photo, get_attraction_types
 
 
 domain = "https://www.tripadvisor.com"
-path_to_list_of_attractions = "/Attractions-g28946-Activities-a_allAttractions.true-Missouri.html"
+path_to_list_of_attractions = "/Attractions-g28948-Activities-a_allAttractions.true-Nebraska.html"
 
 # Get links to all attractions on list of attractions page
 driver = webdriver.Firefox()
@@ -40,6 +40,7 @@ for attraction in attraction_list_links:
     attraction_phone_number = get_attraction_phone_number(attraction_document)
     attraction_hours = get_attraction_hours(attraction_document)
     attraction_photo_link = get_attraction_photo(driver)
+    attraction_types = get_attraction_types(attraction_document)
 
     print(attraction_name)
     print(attraction_address)
@@ -48,6 +49,7 @@ for attraction in attraction_list_links:
     print(attraction_phone_number)
     print(attraction_hours)
     print(attraction_photo_link)
+    print(attraction_types)
     driver.close()
     print("--------------------------------------------------------------------------------------------------------")
 
