@@ -5,6 +5,9 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
 import time
 from scrape_functions import get_attraction_list, get_attraction_name, get_attraction_address, get_attraction_website, get_attraction_rating, get_attraction_phone_number, get_attraction_hours, get_attraction_photo, get_attraction_types
 from pymongo import MongoClient
@@ -19,7 +22,7 @@ paths_to_list_of_attractions = [input("1st Path:  "), input("2nd Path:  ")]
 
 for path in paths_to_list_of_attractions:
     # Get links to all attractions on list of attractions page
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
     driver.get(domain + path)
     time.sleep(2.5)
     driver_document = driver.page_source
@@ -29,7 +32,7 @@ for path in paths_to_list_of_attractions:
 
     # Visit each attraction link & scrape data
     for attraction in attraction_list_links:
-        driver = webdriver.Firefox()
+        driver = webdriver.Chrome(service=Service(ChromeDriverManager(chrome_type=ChromeType.BRAVE).install()))
         driver.get(domain + str(attraction))
         time.sleep(2.5)
         driver_document = driver.page_source
@@ -57,3 +60,4 @@ for path in paths_to_list_of_attractions:
         "phone_number": attraction_phone_number, "hours": attraction_hours, "photo_link": attraction_photo_link, "types": attraction_types}
         collection.insert_one(mongodb_attraction_document)
         print("--------------------------------------------------------------------------------------------------------")
+        time.sleep(1 * random.uniform(1, 3))
