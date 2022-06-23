@@ -47,7 +47,7 @@ def get_attraction_photo(web_driver):
         web_driver.find_element(By.XPATH, "//span[text()='Full view']").click()
     except:
         return "No photos of attraction available."
-    time.sleep(2.5)
+    time.sleep(3.25)
     web_driver_document = web_driver.page_source
     attraction_document = BeautifulSoup(web_driver_document, "html.parser")
     attraction_photo_raw = attraction_document.find("picture", {"class": "dugSS _R fXtOt kFZIK"})
