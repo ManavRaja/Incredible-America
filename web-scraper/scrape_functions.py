@@ -12,11 +12,11 @@ def get_attraction_list(html_document):
 def get_attraction_name(html_document):
     return html_document.find("h1", {"class": "WlYyy cPsXC GeSzT"}).text
 
-def get_attraction_address(html_document, city):
-        attraction_address_raw = html_document.find_all("span", {"class": "WlYyy cacGK Wb"})
-        for attraction_address in attraction_address_raw:
-            if city in attraction_address.text:
-                return attraction_address.text
+def get_attraction_address(html_document):
+    attraction_address_raw = html_document.find_all("button", {"class": "bfQwA _G B- _S _T c G_ P0 ddFHE cnvzr bTBvn"})
+    for attraction_address in attraction_address_raw:
+        if html_document.find("span", {"class": "WlYyy cacGK Wb"}) != None:
+            return attraction_address.text
 
 def get_attraction_website(html_document):
     attraction_website_raw = html_document.find_all("span", {"class": "WlYyy cacGK Wb"})
@@ -43,7 +43,10 @@ def get_attraction_hours(html_document):
     return attraction_hours
 
 def get_attraction_photo(web_driver):
-    web_driver.find_element(By.XPATH, "//span[text()='Full view']").click()
+    try:
+        web_driver.find_element(By.XPATH, "//span[text()='Full view']").click()
+    except:
+        return "No photos of attraction available."
     time.sleep(2.5)
     web_driver_document = web_driver.page_source
     attraction_document = BeautifulSoup(web_driver_document, "html.parser")

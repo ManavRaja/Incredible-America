@@ -10,8 +10,7 @@ from scrape_functions import get_attraction_list, get_attraction_name, get_attra
 
 
 domain = "https://www.tripadvisor.com"
-path_to_list_of_attractions = "/Attractions-g44881-Activities-a_allAttractions.true-Saint_Louis_Missouri.html"
-city = "Saint Louis"
+path_to_list_of_attractions = "/Attractions-g28946-Activities-a_allAttractions.true-Missouri.html"
 
 # Get links to all attractions on list of attractions page
 driver = webdriver.Firefox()
@@ -35,7 +34,7 @@ for attraction in attraction_list_links:
     attraction_document = BeautifulSoup(driver_document, "html.parser")
 
     attraction_name = get_attraction_name(attraction_document)
-    attraction_address = get_attraction_address(attraction_document, city)
+    attraction_address = get_attraction_address(attraction_document)
     attraction_website_link = get_attraction_website(attraction_document)
     attraction_rating = get_attraction_rating(attraction_document)
     attraction_phone_number = get_attraction_phone_number(attraction_document)
