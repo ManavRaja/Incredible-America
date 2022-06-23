@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 import time
-from scrape_functions import get_attraction_list, get_attraction_name, get_attraction_address, get_attraction_website, get_attraction_rating, get_attraction_phone_number, get_attraction_hours, get_attraction_photo, get_attraction_types
+from attraction_scrape_functions import get_attraction_list, get_attraction_name, get_attraction_address, get_attraction_website, get_attraction_rating, get_attraction_phone_number, get_attraction_hours, get_attraction_photo, get_attraction_types
 from pymongo import MongoClient
 
 
