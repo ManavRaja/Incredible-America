@@ -5,7 +5,7 @@ import pprint
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["Incredible-America"]
-collection = db["Attractions"]
+collection = db["Restaurants"]
 
 duplicates = collection.aggregate([
     {"$group" : { "_id": "$name", "count": { "$sum": 1 } } },

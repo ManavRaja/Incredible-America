@@ -19,6 +19,10 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["Incredible-America"]
 collection = db["Restaurants"]
 
+client2 = MongoClient("mongodb://5.161.111.104:27017/")
+db2 = client2["Incredible-America"]
+collection2 = db2["Restaurants"]
+
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 
@@ -70,7 +74,10 @@ for path in paths_to_list_of_restaurants:
             
             mongodb_restaurant_document = {"name": restaurant_name, "state": state, "address": restaurant_address, "website_link": restaurant_website_link, "rating": restaurant_rating,
             "phone_number": restaurant_phone_number, "hours": restaurant_hours, "photo_link": restaurant_photo_link, "price": restaurant_price, "types": restaurant_types}
-            collection.insert_one(mongodb_restaurant_document)
+            try:
+                collection.insert_one(mongodb_restaurant_document)
+            except:
+                collection2.insert_one(mongodb_restaurant_document)
             print("--------------------------------------------------------------------------------------------------------")
             time.sleep(random.uniform(1, 3) * random.uniform(1, 3))
             driver.close()

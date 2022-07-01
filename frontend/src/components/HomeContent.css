@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Hubballi&display=swap');
+
+
+.home-content {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.home-hype-text {
+    margin-left: 20%;
+    margin-right: 20%;
+
+    color: #404040;
+    font-family: 'Hubballi', cursive;
+}
+
+.home-type-pic {
+    margin-top: 8rem;
+    margin-left: 4vw;
+    margin-right: 4vw;
+
+    height: 20rem;
+}
+
+.home-type-link {
+    color: #404040;
+    font-family: 'Hubballi', cursive;
+}

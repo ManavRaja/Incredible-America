@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
+
+.title {
+    font-family: 'Trispace', sans-serif;
+    color: #404040;
+
+    text-align: center;
+
+    margin-top: 4rem;
+    margin-bottom: 0rem;
+}
+
+body {
+    background-color: #F2F2F2;;
+}
+
+.state-buttons {
+    all: unset;
+    cursor: pointer;
+
+}
+
+hr.sep-2 {
+    border: 0; 
+    height: 5px; 
+    background-image: linear-gradient(to right, #f0f0f0, #00b9ff, #59d941, #f0f0f0);
+
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
+}
+
+
+.dropdown-item {
+    background-color: #FFC107;
+}
+
+.dropdown-item:hover {
+    background-color: #ffca2c;
+}
+
+ul .dropdown-menu.show {
+    background-color: #FFC107;
+}
+
+.loading {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}

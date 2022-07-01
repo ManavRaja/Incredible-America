@@ -1,0 +1,15 @@
+.card-img-left {
+    width: 15rem;
+    height: auto;
+}
+
+.card {
+    margin: 2rem;
+}
+
+.loading {
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills:wght@800&display=swap');
+
+body {
+    background-color: #F2F2F2;
+}
+
+.error-code {
+    font-family: 'Stick No Bills', sans-serif;
+    color: #404040;
+
+    text-align: center;
+
+    margin-top: 35vh;
+}

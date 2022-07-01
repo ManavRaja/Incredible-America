@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
+
+body {
+    background-color: #F2F2F2;
+}
+
+.about-title {
+    text-align: center;
+    
+    margin-top: 4rem;
+
+    font-family: 'Trispace', sans-serif;
+    color: #404040;
+}
+
+.about-heading {
+    text-align: center;
+    margin-top: 3rem;
+}

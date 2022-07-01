@@ -1,0 +1,10 @@
+.dropdown-item a {
+    text-decoration: none;
+    color: black;
+
+    text-align: center;
+}
+
+.dropdown-item {
+    text-align: center;
+}

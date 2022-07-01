@@ -1,0 +1,28 @@
+.card img {
+    height: 18rem;
+    width: 18rem;
+}
+
+.card {
+    margin: 2rem;
+    color: #3d405b;
+}
+
+.filter {
+    margin: 3rem;
+}
+
+button {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.filters-section {
+    outline: 1px red;
+}
+
+.attraction-link {
+    text-decoration: none;
+}
